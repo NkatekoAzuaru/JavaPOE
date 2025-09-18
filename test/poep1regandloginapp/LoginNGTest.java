@@ -1,8 +1,10 @@
+package poep1regandloginapp;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/EmptyTestNGTest.java to edit this template
  */
-package poep1regandloginapp;
+
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
@@ -12,13 +14,8 @@ import org.testng.Assert;
  * @author RC_Student_lab
  */
 public class LoginNGTest {
-     Login log = new Login();
-   User Use = new User("Kyl_1","kyle!!!!!!!", "Ch&&sec@ke99!","password","+27838968979","08966553" );
-   Registration Reg = new Registration();      
+    
    
-    public LoginNGTest(){
-        
-    }
     Login obj = new Login();
 
     @Test
@@ -50,4 +47,29 @@ public class LoginNGTest {
     public void testCheckCellPhoneNumberInvalid() {
         Assert.assertFalse(obj.checkCellPhoneNumber("08966553"));
     }
+
+    @Test
+    public void testLoginUser() {
+    }
+
+    @Test
+    public void testReturnLoginStatus() {
+    }
+
+    @Test
+    public void testCheckUserName() {
+    }
+
+    @Test
+    public void testCheckPasswordComplexity() {
+    }
+
+    @Test
+    public void testCheckCellPhoneNumber() {
+    }
+
+    @Test
+    public void testRegisterUser() {
+    }
+
 }
