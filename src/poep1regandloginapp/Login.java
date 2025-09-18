@@ -6,11 +6,26 @@ package poep1regandloginapp;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
+/**
  *
  * @author RC_Student_lab
  */
-public class RegistrationForm {
-   public boolean checkUserName(String username){
+
+
+
+public class Login {
+  public boolean loginUser(String username, String password, User user){
+        return user.getUsername().equals(username) && user.getPassword().equals(password);
+    }
+    
+    public String returnLoginStatus(boolean loginStatus, User user) {
+        if (loginStatus) {
+            return "Welcome " + user.getFisrtName() + " " + user.getLastName() + ", it is great to see you again.";
+        }else{
+            return "Username or password incorrct, please try again.";
+        }
+    }
+    public boolean checkUserName(String username){
         return username.contains("_") && username.length() <= 5;
     }
     
@@ -45,4 +60,5 @@ public class RegistrationForm {
         }
         return "User has been registered successfully.";
     }
-} 
+    
+}  

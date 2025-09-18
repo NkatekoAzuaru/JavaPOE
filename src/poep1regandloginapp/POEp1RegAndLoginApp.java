@@ -19,7 +19,7 @@ public class POEp1RegAndLoginApp {
         // TODO code application logic here
         Scanner scanner = new Scanner(System.in);
         RegistrationForm registration = new RegistrationForm();
-        LoginForm login = new LoginForm();
+        Login login = new Login();
         
         System.out.println("=== User Registration Form ===");
         System.out.println("Please enter First name: ");
