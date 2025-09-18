@@ -14,7 +14,7 @@ import org.testng.Assert;
 public class LoginNGTest {
      Login log = new Login();
    User Use = new User("Kyl_1","kyle!!!!!!!", "Ch&&sec@ke99!","password","+27838968979","08966553" );
-   Registration Reg = new Registration();
+   Registration Reg = new Registration();      
    
     public LoginNGTest(){
         
