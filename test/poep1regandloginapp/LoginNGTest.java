@@ -12,7 +12,13 @@ import org.testng.Assert;
  * @author RC_Student_lab
  */
 public class LoginNGTest {
-    
+     Login log = new Login();
+   User Use = new User("Kyl_1","kyle!!!!!!!", "Ch&&sec@ke99!","password","+27838968979","08966553" );
+   Registration Reg = new Registration();
+   
+    public LoginNGTest(){
+        
+    }
     Login obj = new Login();
 
     @Test
