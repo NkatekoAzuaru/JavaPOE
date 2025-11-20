@@ -1,4 +1,3 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -7,10 +6,10 @@ package poep1regandloginapp;
 
 /**
  *
- * @author RC_Student_lab
+ * @author RC_Student_Lab
  */
 public class User {
-    private String username;
+     private String username;
     private String password;
     private String cellPhone;
     private String firstName;

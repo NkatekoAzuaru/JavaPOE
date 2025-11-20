@@ -3,14 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package poep1regandloginapp;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
  *
  * @author RC_Student_lab
  */
+/**
+ *
+ * @author RC_Student_Lab
+ */
 public class Registration {
-   public boolean checkUserName(String username){
+      public boolean checkUserName(String username){
         return username.contains("_") && username.length() <= 5;
     }
     
@@ -45,4 +50,4 @@ public class Registration {
         }
         return "User has been registered successfully.";
     }
-} 
+}

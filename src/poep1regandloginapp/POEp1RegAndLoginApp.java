@@ -3,19 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package poep1regandloginapp;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
+
 /**
- *
- * @author RC_Student_lab
+ * Main application (Part 1 + Part 2 + Part 3 menu integration)
  */
 public class POEp1RegAndLoginApp {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         Registration registration = new Registration();
         Login login = new Login();
@@ -47,40 +43,79 @@ public class POEp1RegAndLoginApp {
 
         if (!loginStatus) return;
 
-        // MENU
+        
         JOptionPane.showMessageDialog(null, "Welcome to QuickChat!");
 
-        int totalMessages = Integer.parseInt(JOptionPane.showInputDialog("How many messages would you like to send?"));
+        MessageManagerr manager = new MessageManagerr();
 
-        for (int i = 0; i < totalMessages; i++) {
-            String recipient = JOptionPane.showInputDialog("Enter recipient cell number (+27...)");
-            String msgText = JOptionPane.showInputDialog("Enter your message (max 250 characters):");
+        // Top-level menu (Part 2 + Part 3)
+        String mainMenu = "Main Menu:\n"
+                + "1. Send Messages\n"
+                + "2. Message Management (Part 3 features)\n"
+                + "3. Quit\n";
 
-            Message msg = new Message(recipient, msgText);
-
-            // Validate recipient and message
-            if (!msg.checkRecipientCell()) {
-                JOptionPane.showMessageDialog(null, "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.");
-                i--;
+        while (true) {
+            String choiceStr = JOptionPane.showInputDialog(mainMenu + "\nEnter option number:");
+            if (choiceStr == null) break;
+            int choice;
+            try {
+                choice = Integer.parseInt(choiceStr);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number 1-3.");
                 continue;
             }
 
-            if (!msg.checkMessageLength().equals("Message ready to send.")) {
-                JOptionPane.showMessageDialog(null, msg.checkMessageLength());
-                i--;
-                continue;
+            if (choice == 1) {
+                // Send messages (same flow as Part 2)
+                String totalStr = JOptionPane.showInputDialog("How many messages would you like to send?");
+                if (totalStr == null) continue;
+                int totalMessages;
+                try {
+                    totalMessages = Integer.parseInt(totalStr);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid number.");
+                    continue;
+                }
+
+                for (int i = 0; i < totalMessages; i++) {
+                    String recipient = JOptionPane.showInputDialog("Enter recipient cell number (+27 followed by 9 digits):");
+                    String msgText = JOptionPane.showInputDialog("Enter your message (max 250 characters):");
+
+                    Messagee msg = new Messagee(recipient, msgText);
+
+                    // Validate recipient and message
+                    if (!msg.checkRecipientCell()) {
+                        JOptionPane.showMessageDialog(null, "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.");
+                        i--;
+                        continue;
+                    }
+
+                    if (!msg.checkMessageLength().equals("Message ready to send.")) {
+                        JOptionPane.showMessageDialog(null, msg.checkMessageLength());
+                        i--;
+                        continue;
+                    }
+
+                    // Choose send/store/disregard
+                    msg.sendMessageOptionUI(); 
+
+                    // Show message details
+                    msg.printMessage();
+
+                }
+                JOptionPane.showMessageDialog(null, "Total messages sent (this run): " + Messagee.returnTotalMessages());
+                // refresh manager arrays
+                manager.refreshFromRuntime();
+
+            } else if (choice == 2) {
+                // Part 3 features
+                manager.showPart3Menu();
+            } else if (choice == 3) {
+                JOptionPane.showMessageDialog(null, "Thank you for using QuickChat. Goodbye!");
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid selection. Enter 1-3.");
             }
-
-            // Choose send/store/disregard
-            msg.sendMessageOption();
-
-            // Show message details
-            msg.printMessage();
         }
-
-        JOptionPane.showMessageDialog(null, "Total messages sent: " + Message.returnTotalMessages());
-
-        JOptionPane.showMessageDialog(null, "Thank you for using QuickChat. Goodbye!");
     }
 }
-
